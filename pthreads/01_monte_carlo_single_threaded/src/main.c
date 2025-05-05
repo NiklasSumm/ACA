@@ -26,16 +26,18 @@ int str_identical_index(const char *str1, const char *str2) {
 }
 
 void *thread_monte_carlo(int samples_per_thread){
-    double x, y;
+    double x, y, sum;
     for (int i = 0; i < samples_per_thread; i++) {
         x = (double)rand() / RAND_MAX;
         y = (double)rand() / RAND_MAX;
         if (x * x + y * y <= 1.0) { // point inside the circle?
-            pthread_mutex_lock(&mutex);
-            shared_variable++; // Increment shared variable
-            pthread_mutex_unlock(&mutex);
+            sum++;
         }
     }
+
+    pthread_mutex_lock(&mutex);
+    shared_variable += sum; // Increment shared variable
+    pthread_mutex_unlock(&mutex);
 
     // Exit the thread
     pthread_exit(NULL);
