@@ -65,7 +65,8 @@ int main() {
 
     // Create threads
     for (int i = 0; i < NUM_THREADS; i++) {
-        pthread_create(&threads[i], NULL, thread_monte_carlo, SAMPLES/NUM_THREADS);
+        int samples_per_thread = SAMPLES/NUM_THREADS;
+        pthread_create(&threads[i], NULL, thread_monte_carlo, &samples_per_thread);
     }
 
     // Wait for threads to finish
