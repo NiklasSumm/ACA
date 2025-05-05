@@ -26,7 +26,8 @@ int str_identical_index(const char *str1, const char *str2) {
     return i-2;
 }
 
-void *thread_monte_carlo(int samples_per_thread){
+void *thread_monte_carlo(void *arg){
+    int *samples_per_thread = (int *)arg;
     double x, y, sum;
     for (int i = 0; i < samples_per_thread; i++) {
         x = (double)rand() / RAND_MAX;
