@@ -26,7 +26,8 @@ int str_identical_index(const char *str1, const char *str2) {
 }
 
 void *thread_monte_carlo(int samples_per_thread){
-    for (i = 0; i < samples_per_thread; i++) {
+    double x, y;
+    for (int i = 0; i < samples_per_thread; i++) {
         x = (double)rand() / RAND_MAX;
         y = (double)rand() / RAND_MAX;
         if (x * x + y * y <= 1.0) { // point inside the circle?
@@ -41,7 +42,7 @@ void *thread_monte_carlo(int samples_per_thread){
 }
 
 int main() {
-    double x, y, pi;
+    double pi;
     pthread_t threads[NUM_THREADS];
 
     srand(42);
