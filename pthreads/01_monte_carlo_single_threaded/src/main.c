@@ -8,7 +8,7 @@
 	#define NUM_THREADS 2
 #endif
 
-#define SAMPLES 1e8 // number of random points to generate
+#define SAMPLES 1e4 // number of random points to generate
 
 // Global variables
 pthread_mutex_t mutex; // Mutex variable
