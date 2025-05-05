@@ -35,6 +35,9 @@ void *thread_monte_carlo(int samples_per_thread){
             pthread_mutex_unlock(&mutex);
         }
     }
+
+    // Exit the thread
+    pthread_exit(NULL);
 }
 
 int main() {
